@@ -1,4 +1,4 @@
-package com.coderstuff01.aopdemo.exception;
+package com.pg.aopdemo.exception;
 
 public class CoderStuffException extends Exception{
 
