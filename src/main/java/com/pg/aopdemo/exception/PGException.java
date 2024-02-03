@@ -1,16 +1,16 @@
 package com.pg.aopdemo.exception;
 
-public class CoderStuffException extends Exception{
+public class PGException extends Exception{
 
-    public CoderStuffException(){
+    public PGException(){
         super();
     }
 
-    public CoderStuffException(String msg){
+    public PGException(String msg){
         super(msg);
     }
 
-    public CoderStuffException(String msg , Throwable throwable){
+    public PGException(String msg , Throwable throwable){
         super(msg, throwable);
     }
 }

@@ -1,4 +1,4 @@
-package com.coderstuff01.aopdemo.aspect;
+package com.pg.aopdemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -25,24 +25,24 @@ public class LoggingAspect {
         log.info("Executing "+methodName+" with "+args.length+" arguments "+ Arrays.toString(args));
     }
 
-    @AfterThrowing("execution(public int com.coderstuff01.aopdemo.service.MyServiceImpl.getException() throws com.coderstuff01.aopdemo.exception.CoderStuffException)")
+    @AfterThrowing("execution(public int com.pg.aopdemo.service.MyServiceImpl.getException() throws com.pg.aopdemo.exception.PGException)")
     public void logAfterThrowingException(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         log.info("getting exception for "+methodName);
     }
-    @Before("execution(public * com.coderstuff01.aopdemo.controller.*.*())")
+    @Before("execution(public * com.pg.aopdemo.controller.*.*())")
     public void logBeforeController(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         log.info("Starting "+methodName);
     }
 
-    @AfterReturning("execution(public * com.coderstuff01.aopdemo.controller.MyAppController.getHomePage())")
+    @AfterReturning("execution(public * com.pg.aopdemo.controller.MyAppController.getHomePage())")
     public void logAfterController(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         log.info("Ending "+methodName);
     }
 
-    @Before("within(com.coderstuff01.aopdemo.*.*)")
+    @Before("within(com.pg.aopdemo.*.*)")
     public void logWithinPackage(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         String packageName = joinPoint.getSourceLocation().getWithinType().getPackage().getName();
@@ -55,7 +55,7 @@ public class LoggingAspect {
         log.info("before Bean method "+methodName);
     }
 
-    @Before("this(com.coderstuff01.aopdemo.service.MyServiceIntf)")
+    @Before("this(com.pg.aopdemo.service.MyServiceIntf)")
     public void logBeforeMethodOfClassInstance(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         String className = joinPoint.getTarget().toString();
@@ -68,7 +68,7 @@ public class LoggingAspect {
         log.info("before method "+methodName+" having annotation @GetMapping");
     }
 
-    @Before("this(com.coderstuff01.aopdemo.service.MyServiceIntf) && !execution(public int com.coderstuff01.aopdemo.service.MyServiceImpl.getSum(int,int))")
+    @Before("this(com.pg.aopdemo.service.MyServiceIntf) && !execution(public int com.pg.aopdemo.service.MyServiceImpl.getSum(int,int))")
     public void andOrNotOperatorDemo(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         log.info(" andOrNotOperatorDemo, before method "+methodName);

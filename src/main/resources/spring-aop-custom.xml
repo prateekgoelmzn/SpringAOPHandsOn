@@ -6,7 +6,7 @@
                            http://www.springframework.org/schema/aop
                            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="myAspect" class="com.coderstuff01.aopdemo.aspect.XmlBasedAspectDemo" />
+    <bean id="myAspect" class="com.pg.aopdemo.aspect.XmlBasedAspectDemo" />
 
     <aop:config>
         <aop:aspect ref="myAspect">

@@ -1,9 +1,7 @@
-package com.coderstuff01.aopdemo.controller;
+package com.pg.aopdemo.controller;
 
-import com.coderstuff01.aopdemo.aspect.LoggingAspect;
-import com.coderstuff01.aopdemo.exception.CoderStuffException;
-import com.coderstuff01.aopdemo.service.MyServiceIntf;
-import org.aspectj.apache.bcel.classfile.Code;
+import com.pg.aopdemo.exception.PGException;
+import com.pg.aopdemo.service.MyServiceIntf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,7 @@ public class MyAppController {
         try{
             service.getException();
         }
-        catch (CoderStuffException exp){
+        catch (PGException exp){
             log.error(exp.getMessage());
         }
         return ResponseEntity.ok("Hello World! sum is "+sum+" and multiply is "+multiply);
