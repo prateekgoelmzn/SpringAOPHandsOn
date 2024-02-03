@@ -49,7 +49,7 @@ public class LoggingAspect {
         log.info("before method "+methodName+" within package "+packageName);
     }
 
-    @Before("bean(coderstuffservice)")
+    @Before("bean(pgservice)")
     public void logBeforeBean(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
         log.info("before Bean method "+methodName);
@@ -58,7 +58,6 @@ public class LoggingAspect {
     @Before("this(com.pg.aopdemo.service.MyServiceIntf)")
     public void logBeforeMethodOfClassInstance(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
-        String className = joinPoint.getTarget().toString();
         log.info("before method "+methodName+" under instance of class MyServiceIntf");
     }
 
