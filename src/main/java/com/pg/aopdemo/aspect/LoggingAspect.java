@@ -1,6 +1,8 @@
 package com.pg.aopdemo.aspect;
 
+import com.pg.aopdemo.exception.PGException;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,19 @@ public class LoggingAspect {
         log.info("Executing "+methodName+" with "+args.length+" arguments "+ Arrays.toString(args));
     }
 
+    @AfterThrowing(
+            pointcut = "execution(public int com.pg.aopdemo.service.MyServiceImpl.getException())",
+            throwing = "exception"
+    )
+    public void logAfterThrowingDemo(PGException exception){
+        log.info("@AfterThrowing : Exception "+exception.getMessage());
+    }
+
+    @After("execution(public int com.pg.aopdemo.service.MyServiceImpl.getException())")
+    public void logAfterThrowingDemo(){
+        log.info("@After : After MyServiceImpl.getException()");
+    }
+
     @AfterThrowing("execution(public int com.pg.aopdemo.service.MyServiceImpl.getException() throws com.pg.aopdemo.exception.PGException)")
     public void logAfterThrowingException(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
@@ -36,10 +51,24 @@ public class LoggingAspect {
         log.info("Starting "+methodName);
     }
 
+    @Before("execution(public * com.pg.aopdemo.controller.*.*())")
+    public void logBeforeAdviceDemo(){
+        log.info(" Before Advice Demo logging....");
+    }
+
     @AfterReturning("execution(public * com.pg.aopdemo.controller.MyAppController.getHomePage())")
     public void logAfterController(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().toShortString();
-        log.info("Ending "+methodName);
+        String kind = joinPoint.getKind();
+        log.info("Ending "+methodName+ " Kind "+kind);
+    }
+
+    @AfterReturning(
+            pointcut = "execution(public int com.pg.aopdemo.service.MyServiceImpl.getSum(..))",
+            returning = "retVal"
+    )
+    public void logAfterReturningDemo(Object retVal){
+        log.info("@AfterReturning : MyServiceImpl.getSum returns "+retVal);
     }
 
     @Before("within(com.pg.aopdemo.*.*)")
@@ -72,4 +101,23 @@ public class LoggingAspect {
         String methodName = joinPoint.getSignature().toShortString();
         log.info(" andOrNotOperatorDemo, before method "+methodName);
     }
+
+    @Around("execution(public int com.pg.aopdemo.service.MyServiceImpl.getSum(..))")
+    public Object logAfterDemo1(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        log.info("@Around : before method execution");
+        Object returnVal = proceedingJoinPoint.proceed();
+        log.info("@Around : return value "+returnVal.toString());
+        log.info("@Around : after method execution");
+        return returnVal;
+    }
+
+    /*
+     * Below code gives null pointer exception
+     * org.springframework.aop.AopInvocationException: Null return value from advice does not match primitive return type for: public int com.coderstuff01.aopdemo.service.MyServiceImpl.getSum(int,int)]
+     */
+//    @Around("execution(public int com.coderstuff01.aopdemo.service.MyServiceImpl.getSum(..))")
+//    public void logAfterDemo2(){
+//        log.info("@Around logAfterDemo2 : before method execution");
+//        log.info("@Around logAfterDemo2 : after method execution");
+//    }
 }
