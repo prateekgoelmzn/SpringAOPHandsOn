@@ -1,0 +1,53 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.3)
+
+2024-02-11 15:42:18.504  INFO 532753 --- [           main] com.pg.aopdemo.Main                      : Starting Main using Java 1.8.0_392 on linuxlite-Inspiron-3420 with PID 532753 (/home/linuxlite/Downloads/spring_handson/SpringAOPDemo/target/classes started by linuxlite in /home/linuxlite/Downloads/spring_handson/SpringAOPDemo)
+2024-02-11 15:42:18.519  INFO 532753 --- [           main] com.pg.aopdemo.Main                      : No active profile set, falling back to 1 default profile: "default"
+2024-02-11 15:42:29.667  INFO 532753 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-02-11 15:42:29.819  INFO 532753 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-11 15:42:29.820  INFO 532753 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2024-02-11 15:42:30.432  INFO 532753 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-11 15:42:30.433  INFO 532753 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11419 ms
+2024-02-11 15:42:35.561  INFO 532753 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-11 15:42:35.609  INFO 532753 --- [           main] com.pg.aopdemo.Main                      : Started Main in 20.007 seconds (JVM running for 23.259)
+2024-02-11 15:42:58.803  INFO 532753 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-11 15:42:58.803  INFO 532753 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-02-11 15:42:58.806  INFO 532753 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-02-11 15:43:03.075  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      :  Before Advice Demo logging....
+2024-02-11 15:43:03.405  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyAppController.getHomePage() having annotation @GetMapping
+2024-02-11 15:43:03.406  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : Starting MyAppController.getHomePage()
+2024-02-11 15:43:03.406  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyAppController.getHomePage() within package com.pg.aopdemo.controller
+2024-02-11 15:43:03.943  INFO 532753 --- [nio-8080-exec-1] c.pg.aopdemo.aspect.XmlBasedAspectDemo   : XmlBasedAspectDemo , getting exception for MyServiceImpl.getSum(..)
+2024-02-11 15:43:03.943  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : @Around : before method execution
+2024-02-11 15:43:03.944  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before Bean method MyServiceImpl.getSum(..)
+2024-02-11 15:43:03.944  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : Executing MyServiceImpl.getSum(..) with 2 arguments [4, 5]
+2024-02-11 15:43:03.944  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyServiceImpl.getSum(..) under instance of class MyServiceIntf
+2024-02-11 15:43:03.944  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyServiceImpl.getSum(..) within package com.pg.aopdemo.service
+2024-02-11 15:43:03.959  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : @AfterReturning : MyServiceImpl.getSum returns 9
+2024-02-11 15:43:03.960  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : @Around : return value 9
+2024-02-11 15:43:03.960  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : @Around : after method execution
+2024-02-11 15:43:03.961  INFO 532753 --- [nio-8080-exec-1] c.pg.aopdemo.aspect.XmlBasedAspectDemo   : XmlBasedAspectDemo , getting exception for MyServiceImpl.multiply(..)
+2024-02-11 15:43:03.961  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      :  andOrNotOperatorDemo, before method MyServiceImpl.multiply(..)
+2024-02-11 15:43:03.961  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before Bean method MyServiceImpl.multiply(..)
+2024-02-11 15:43:03.961  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : Executing MyServiceImpl.multiply(..) with 2 arguments [4, 5]
+2024-02-11 15:43:03.962  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyServiceImpl.multiply(..) under instance of class MyServiceIntf
+2024-02-11 15:43:03.962  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyServiceImpl.multiply(..) within package com.pg.aopdemo.service
+2024-02-11 15:43:03.963  INFO 532753 --- [nio-8080-exec-1] c.pg.aopdemo.aspect.XmlBasedAspectDemo   : XmlBasedAspectDemo , getting exception for MyServiceImpl.getException()
+2024-02-11 15:43:03.963  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      :  andOrNotOperatorDemo, before method MyServiceImpl.getException()
+2024-02-11 15:43:03.963  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before Bean method MyServiceImpl.getException()
+2024-02-11 15:43:03.963  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : Executing MyServiceImpl.getException() with 0 arguments []
+2024-02-11 15:43:03.963  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyServiceImpl.getException() under instance of class MyServiceIntf
+2024-02-11 15:43:03.964  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : before method MyServiceImpl.getException() within package com.pg.aopdemo.service
+2024-02-11 15:43:03.965  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : getting exception for MyServiceImpl.getException()
+2024-02-11 15:43:03.965  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : @AfterThrowing : Exception this is exception
+2024-02-11 15:43:03.965  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : @After : After MyServiceImpl.getException()
+2024-02-11 15:43:03.965 ERROR 532753 --- [nio-8080-exec-1] c.pg.aopdemo.controller.MyAppController  : this is exception
+2024-02-11 15:43:04.684  INFO 532753 --- [nio-8080-exec-1] com.pg.aopdemo.aspect.LoggingAspect      : Ending MyAppController.getHomePage() Kind method-execution
+
+Process finished with exit code 130 (interrupted by signal 2: SIGINT)
